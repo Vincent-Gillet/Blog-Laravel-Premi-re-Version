@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
-
+use App\Models\Post;
 
 abstract class Controller
 {
@@ -64,4 +64,37 @@ abstract class Controller
         </section>'
         ]);
     }
+
+    // public function index(): View
+    // {
+    //     $elements = ['Element 1', 'Element 2', 'Element 3'];
+    //     $title = "welcome";
+    //     $content = "test content";
+    //     $condition = true; 
+
+    //     return view('head', 
+    //     ['title'=>$title,
+    //     'elements' => $elements,
+    //     'condition' => $condition,
+    //     'content'=>$content
+    //     ]);
+    // }
+
+
+        public function articles(): View
+    {
+        // $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->take(6)->get();
+
+        return view('articles', 
+        ['posts'=>$posts]
+        );
+    }
+
+//     public function anotherMethod(): View
+// {
+//     $posts = Post::all();
+
+//     return view('another-view', ['posts' => $posts]);
+// }
 }

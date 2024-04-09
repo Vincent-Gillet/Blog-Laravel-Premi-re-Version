@@ -1,4 +1,4 @@
-@include('layouts.front.header')
+@include('layouts.front.head')
         {!! $title !!}
         {!! $content !!}
 @include('layouts.front.footer')
